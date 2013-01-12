@@ -169,7 +169,8 @@
 		</site>
 	</distributionManagement>
 	<repositories>
-		<!-- Agorava snapshot repo is used for times where maven central is not enough up-to-date (like for that agorava-wordpress-utils thingie -->
+		<!-- Agorava snapshot repo is used for times where maven central is not 
+			enough up-to-date (like for that agorava-wordpress-utils thingie -->
 		<repository>
 			<id>agorava-snapshot-repo</id>
 			<name>Agorava Snapshot Repository</name>
@@ -187,5 +188,12 @@
 		<profile>
 			<id>generate-model</id>
 		</profile>
+		<modules>
+			<module>agorava-wordpress-api-generator</module>
+		</modules>
 	</profiles>
+	<modules>
+		<module>agorava-wordpress-api</module>
+		<module>agorava-wordpress-cdi</module>
+	</modules>
 </project>

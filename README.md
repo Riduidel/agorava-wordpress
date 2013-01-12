@@ -5,7 +5,7 @@ agorava-stackoverflow
 
 An attempt at creating an Agorava service hub for Wordpress (both Wordpress.com and standard Wordpress.org installations).
 
-This project, for now, uses the API described at that URL : http://jetpack.me/support/json-api/
+This project, for now, uses the API pointed at that URL : http://jetpack.me/support/json-api/ and described at this URL : http://developer.wordpress.com/docs/api/
 
 Project documentation is available through [GitHub pages][1]. So, for your informations, here are all versions pages (sorted in reverse numeric order) : 
 
