@@ -9,6 +9,6 @@
 	<artifactId>users</artifactId>
 	<packaging>pom</packaging>
 	<properties>
-		<query.to.use>https://public-api.wordpress.com/rest/v1/me/?pretty=1</query.to.use>
+		<query.to.use>/rest/v1/me/?pretty=1</query.to.use>
 	</properties>
 </project>

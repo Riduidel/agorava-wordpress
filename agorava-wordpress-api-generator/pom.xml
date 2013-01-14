@@ -8,6 +8,7 @@
   <artifactId>agorava-wordpress-api-generator</artifactId>
 	<description>a generator project abusing some components to produce code</description>
 	<properties>
+        <server.address>https://public-api.wordpress.com/</server.address>
 		<element.to.generate>${project.artifactId}</element.to.generate>
 		<!-- path is invalid in this project, but will become valid once in subdirectories 
 			(not very clean, but nevertheless efficient -->
@@ -17,6 +18,48 @@
 		<jsonschema2pojo.output.directory>${jsonschema2pojo.directory}/json-pojos</jsonschema2pojo.output.directory>
 	</properties>
 	<profiles>
+        <profile>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <id>default profile (checking some parameters)</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-enforcer-plugin</artifactId>
+                        <version>1.1</version>
+                        <executions>
+                            <execution>
+                                <id>enforce-property</id>
+                                <goals>
+                                    <goal>enforce</goal>
+                                </goals>
+                                <configuration>
+                                    <rules>
+                                        <requireProperty>
+                                            <property>wordpress.test.id</property>
+                                            <message>
+You must have a Wordpress application set on wordpress developpers site.
+Once defined, you can create a property named wordpress.test.id which will contain that application id.
+Typically, it will be set in your user settings.</message>
+                                        </requireProperty>
+                                        <requireProperty>
+                                            <property>wordpress.test.secret</property>
+                                            <message>
+Your wordpress application must have a valid secret.
+Once defined, you can create a property named wordpress.test.secret which will contain that application id.
+Typically, it will be set in your user settings.</message>
+                                        </requireProperty>
+                                    </rules>
+                                    <fail>true</fail>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
 		<profile>
 			<activation>
 				<file>
@@ -25,24 +68,57 @@
 			</activation>
 			<build>
 				<plugins>
-					<plugin>
-						<groupId>org.codehaus.mojo</groupId>
-						<artifactId>wagon-maven-plugin</artifactId>
-						<version>1.0-beta-3</version>
-						<executions>
-							<execution>
-								<phase>initialize</phase>
-								<goals>
-									<goal>download-single</goal>
-								</goals>
-								<configuration>
-									<url>https://public-api.wordpress.com/</url>
-									<fromFile>${query.to.use}</fromFile>
-									<toFile>${jsonschema2pojo.source.directory}/${element.to.generate}/data.json</toFile>
-								</configuration>
-							</execution>
-						</executions>
-					</plugin>
+                    <plugin>
+                        <groupId>org.codehaus.gmaven</groupId>
+                        <artifactId>gmaven-plugin</artifactId>
+                        <version>1.3</version>
+                        <configuration>
+                            <providerSelection>1.7</providerSelection>
+                            <!-- This is only used if you want to run a groovy script from the command line using maven -->
+                        </configuration>
+                        <executions>
+                            <execution>
+                                <phase>initialize</phase>
+                                <goals>
+                                    <goal>execute</goal>
+                                </goals>
+                                <configuration>
+                                    <source>${project.basedir}/../src/main/groovy/downloadData.groovy</source>
+                                    <classpath>
+                                        <element>
+                                            <groupId>org.codehaus.groovy.modules.http-builder</groupId>
+                                            <artifactId>http-builder</artifactId>
+                                            <version>0.5.2</version>
+                                        </element>
+                                    </classpath>
+                                </configuration>
+                            </execution>
+                        </executions>
+                        <!-- This block is required in order to make the gmaven plugins use a groovy other than 1.7.4.
+                         This is independent of the groovy entry in the dependencies section.  This does not affect the class path.
+
+                         What is interesting is that there must be both the gmaven.runtime entry with the explicit excludes
+                         and the additional dependency on whatever version we do want to use.  If you exclude the former,
+                         it will throw an exception. -->
+                        <dependencies>
+                            <dependency>
+                                <groupId>org.codehaus.gmaven.runtime</groupId>
+                                <artifactId>gmaven-runtime-1.7</artifactId>
+                                <version>1.3</version>
+                                <exclusions>
+                                    <exclusion>
+                                        <groupId>org.codehaus.groovy</groupId>
+                                        <artifactId>groovy-all</artifactId>
+                                    </exclusion>
+                                </exclusions>
+                            </dependency>
+                            <dependency>
+                                <groupId>org.codehaus.groovy</groupId>
+                                <artifactId>groovy-all</artifactId>
+                                <version>1.7.6</version>
+                            </dependency>
+                        </dependencies>
+                    </plugin>
 					<plugin>
 						<groupId>com.googlecode.jsonschema2pojo</groupId>
 						<artifactId>jsonschema2pojo-maven-plugin</artifactId>
@@ -78,7 +154,7 @@
 	</profiles>
 	<packaging>pom</packaging>
 	<modules>
+        <module>users</module>
 		<module>agorava-wordpress-api-generated</module>
-		<module>users</module>
 	</modules>
 </project>
