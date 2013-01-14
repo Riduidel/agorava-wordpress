@@ -1,6 +1,6 @@
 [![Build Status](https://buildhive.cloudbees.com/job/Riduidel/job/agorava-wordpress/badge/icon)](https://buildhive.cloudbees.com/job/Riduidel/job/agorava-wordpress/)
 
-agorava-stackoverflow
+agorava-wordpress
 =====================
 
 An attempt at creating an Agorava service hub for Wordpress (both Wordpress.com and standard Wordpress.org installations).
