@@ -141,6 +141,7 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-jxr-plugin</artifactId>
+                <version>2.3</version>
 			</plugin>
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
@@ -187,10 +188,10 @@
 	<profiles>
 		<profile>
 			<id>generate-model</id>
+            <modules>
+                <module>agorava-wordpress-api-generator</module>
+            </modules>
 		</profile>
-		<modules>
-			<module>agorava-wordpress-api-generator</module>
-		</modules>
 	</profiles>
 	<modules>
 		<module>agorava-wordpress-api</module>
