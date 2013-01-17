@@ -1,0 +1,14 @@
+{
+    "ID": 3584907,
+    "name": "WordPress.com News",
+    "description": "The latest news on WordPress.com and the WordPress community.",
+    "URL": "http:\/\/en.blog.wordpress.com",
+    "meta": {
+        "links": {
+            "self": "https:\/\/public-api.wordpress.com\/rest\/v1\/sites\/3584907",
+            "help": "https:\/\/public-api.wordpress.com\/rest\/v1\/sites\/3584907\/help",
+            "posts": "https:\/\/public-api.wordpress.com\/rest\/v1\/sites\/3584907\/posts\/",
+            "comments": "https:\/\/public-api.wordpress.com\/rest\/v1\/sites\/3584907\/comments\/"
+        }
+   }
+}

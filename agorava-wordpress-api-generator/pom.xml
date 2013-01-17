@@ -8,7 +8,7 @@
   <artifactId>agorava-wordpress-api-generator</artifactId>
 	<description>a generator project abusing some components to produce code</description>
 	<properties>
-        <server.address>https://public-api.wordpress.com/</server.address>
+        <server.address>https://public-api.wordpress.com</server.address>
 		<element.to.generate>${project.artifactId}</element.to.generate>
 		<!-- path is invalid in this project, but will become valid once in subdirectories 
 			(not very clean, but nevertheless efficient -->
@@ -68,56 +68,26 @@ Typically, it will be set in your user settings.</message>
 			</activation>
 			<build>
 				<plugins>
+                    <!-- as there is way to simply download an example, I copied most of the responses in submodules and let maven-resources copy them -->
                     <plugin>
-                        <groupId>org.codehaus.gmaven</groupId>
-                        <artifactId>gmaven-plugin</artifactId>
-                        <version>1.3</version>
-                        <configuration>
-                            <providerSelection>1.7</providerSelection>
-                            <!-- This is only used if you want to run a groovy script from the command line using maven -->
-                        </configuration>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-resources-plugin</artifactId>
                         <executions>
                             <execution>
-                                <phase>initialize</phase>
+                                <phase>generate-sources</phase>
                                 <goals>
-                                    <goal>execute</goal>
+                                    <goal>copy-resources</goal>
                                 </goals>
                                 <configuration>
-                                    <source>${project.basedir}/../src/main/groovy/downloadData.groovy</source>
-                                    <classpath>
-                                        <element>
-                                            <groupId>org.codehaus.groovy.modules.http-builder</groupId>
-                                            <artifactId>http-builder</artifactId>
-                                            <version>0.5.2</version>
-                                        </element>
-                                    </classpath>
+                                    <outputDirectory>${jsonschema2pojo.source.directory}/${element.to.generate}</outputDirectory>
+                                    <resources>
+                                        <resource>
+                                            <directory>src/main/resources/json</directory>
+                                        </resource>
+                                    </resources>
                                 </configuration>
                             </execution>
                         </executions>
-                        <!-- This block is required in order to make the gmaven plugins use a groovy other than 1.7.4.
-                         This is independent of the groovy entry in the dependencies section.  This does not affect the class path.
-
-                         What is interesting is that there must be both the gmaven.runtime entry with the explicit excludes
-                         and the additional dependency on whatever version we do want to use.  If you exclude the former,
-                         it will throw an exception. -->
-                        <dependencies>
-                            <dependency>
-                                <groupId>org.codehaus.gmaven.runtime</groupId>
-                                <artifactId>gmaven-runtime-1.7</artifactId>
-                                <version>1.3</version>
-                                <exclusions>
-                                    <exclusion>
-                                        <groupId>org.codehaus.groovy</groupId>
-                                        <artifactId>groovy-all</artifactId>
-                                    </exclusion>
-                                </exclusions>
-                            </dependency>
-                            <dependency>
-                                <groupId>org.codehaus.groovy</groupId>
-                                <artifactId>groovy-all</artifactId>
-                                <version>1.7.6</version>
-                            </dependency>
-                        </dependencies>
                     </plugin>
 					<plugin>
 						<groupId>com.googlecode.jsonschema2pojo</groupId>
@@ -156,5 +126,11 @@ Typically, it will be set in your user settings.</message>
 	<modules>
         <module>users</module>
 		<module>agorava-wordpress-api-generated</module>
+		<module>sites</module>
+		<module>posts</module>
+		<module>comments</module>
+		<module>categories</module>
+		<module>tags</module>
+		<module>test-get</module>
 	</modules>
 </project>

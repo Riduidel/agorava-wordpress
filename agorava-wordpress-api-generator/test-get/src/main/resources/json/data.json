@@ -1,0 +1,12 @@
+{
+         "method_id_matches_query_id": false,
+         "method_id": 123,
+         "id": null,
+         "default_string": "default",
+         "default_int": 100,
+         "boolean_whitelist_defaults_to_false": false,
+         "boolean_whitelist_defaults_to_true": true,
+         "string_whitelist_defaults_to_foo": "foo",
+         "url": null,
+         "datetime": "2013-01-16T16:53:35+00:00"
+     }

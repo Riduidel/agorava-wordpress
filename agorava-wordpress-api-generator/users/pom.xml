@@ -8,7 +8,4 @@
 	</parent>
 	<artifactId>users</artifactId>
 	<packaging>pom</packaging>
-	<properties>
-		<query.to.use>/rest/v1/me/?pretty=1</query.to.use>
-	</properties>
 </project>

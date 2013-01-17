@@ -1,0 +1,14 @@
+{
+    "name": "Community",
+    "slug": "community",
+    "description": "",
+    "post_count": 75,
+    "parent": 0,
+    "meta": {
+        "links": {
+            "self": "https:\/\/public-api.wordpress.com\/rest\/v1\/sites\/3584907\/categories\/slug:community",
+            "help": "https:\/\/public-api.wordpress.com\/rest\/v1\/sites\/3584907\/categories\/slug:community\/help",
+            "site": "https:\/\/public-api.wordpress.com\/rest\/v1\/sites\/3584907"
+        }
+    }
+}
