@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.TreeMap;
+
 import javax.annotation.Generated;
 import org.apache.commons.lang.builder.EqualsBuilder;
 import org.apache.commons.lang.builder.HashCodeBuilder;
@@ -92,11 +94,11 @@ public class Post {
     @JsonProperty("publicize_URLs")
     private List<Object> publicizeURLs = new ArrayList<Object>();
     @JsonProperty("tags")
-    private Tags tags;
+    private Map<String, Tag> tags = new TreeMap<String, Tag>();
     @JsonProperty("categories")
-    private Categories categories;
+    private Map<String, Category> categories;
     @JsonProperty("attachments")
-    private Attachments attachments;
+    private Map<String, Attachment> attachments;
     @JsonProperty("meta")
     private Meta meta;
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
@@ -432,46 +434,46 @@ public class Post {
     }
 
     @JsonProperty("tags")
-    public Tags getTags() {
+    public Map<String, Tag> getTags() {
         return tags;
     }
 
     @JsonProperty("tags")
-    public void setTags(Tags tags) {
+    public void setTags(Map<String, Tag> tags) {
         this.tags = tags;
     }
 
-    public Post withTags(Tags tags) {
+    public Post withTags(Map<String, Tag> tags) {
         this.tags = tags;
         return this;
     }
 
     @JsonProperty("categories")
-    public Categories getCategories() {
+    public Map<String, Category> getCategories() {
         return categories;
     }
 
     @JsonProperty("categories")
-    public void setCategories(Categories categories) {
+    public void setCategories(Map<String, Category> categories) {
         this.categories = categories;
     }
 
-    public Post withCategories(Categories categories) {
+    public Post withCategories(Map<String, Category> categories) {
         this.categories = categories;
         return this;
     }
 
     @JsonProperty("attachments")
-    public Attachments getAttachments() {
+    public Map<String, Attachment> getAttachments() {
         return attachments;
     }
 
     @JsonProperty("attachments")
-    public void setAttachments(Attachments attachments) {
+    public void setAttachments(Map<String, Attachment> attachments) {
         this.attachments = attachments;
     }
 
-    public Post withAttachments(Attachments attachments) {
+    public Post withAttachments(Map<String, Attachment> attachments) {
         this.attachments = attachments;
         return this;
     }

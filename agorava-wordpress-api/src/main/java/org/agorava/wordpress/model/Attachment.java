@@ -23,7 +23,7 @@ import org.codehaus.jackson.map.annotate.JsonSerialize;
     "width",
     "height"
 })
-public class _14153 {
+public class Attachment {
 
     @JsonProperty("ID")
     private Integer ID;
@@ -49,7 +49,7 @@ public class _14153 {
         this.ID = ID;
     }
 
-    public _14153 withID(Integer ID) {
+    public Attachment withID(Integer ID) {
         this.ID = ID;
         return this;
     }
@@ -64,7 +64,7 @@ public class _14153 {
         this.URL = URL;
     }
 
-    public _14153 withURL(String URL) {
+    public Attachment withURL(String URL) {
         this.URL = URL;
         return this;
     }
@@ -79,7 +79,7 @@ public class _14153 {
         this.guid = guid;
     }
 
-    public _14153 withGuid(String guid) {
+    public Attachment withGuid(String guid) {
         this.guid = guid;
         return this;
     }
@@ -94,7 +94,7 @@ public class _14153 {
         this.mimeType = mimeType;
     }
 
-    public _14153 withMimeType(String mimeType) {
+    public Attachment withMimeType(String mimeType) {
         this.mimeType = mimeType;
         return this;
     }
@@ -109,7 +109,7 @@ public class _14153 {
         this.width = width;
     }
 
-    public _14153 withWidth(Integer width) {
+    public Attachment withWidth(Integer width) {
         this.width = width;
         return this;
     }
@@ -124,7 +124,7 @@ public class _14153 {
         this.height = height;
     }
 
-    public _14153 withHeight(Integer height) {
+    public Attachment withHeight(Integer height) {
         this.height = height;
         return this;
     }
