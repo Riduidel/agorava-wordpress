@@ -24,7 +24,8 @@
 		<core.version>${agorava-core.version}</core.version>
 		<jsonschema2pojo.version>0.3.3</jsonschema2pojo.version>
 		<solder-impl.version>3.1.1.Final</solder-impl.version>
-        <!-- API key and secret for Wordpress ... the secret can obviously be changed at any time ! -->
+		<!-- API key and secret for Wordpress ... the secret can obviously be changed 
+			at any time ! -->
 	</properties>
 	<dependencyManagement>
 		<dependencies>
@@ -40,6 +41,12 @@
 				<artifactId>agorava-core-impl-cdi</artifactId>
 				<version>${agorava-core.version}</version>
 				<scope>compile</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.hamcrest</groupId>
+				<artifactId>hamcrest-all</artifactId>
+				<version>1.1</version>
+				<scope>test</scope>
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
@@ -142,7 +149,7 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-jxr-plugin</artifactId>
-                <version>2.3</version>
+				<version>2.3</version>
 			</plugin>
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
@@ -189,9 +196,9 @@
 	<profiles>
 		<profile>
 			<id>generate-model</id>
-            <modules>
-                <module>agorava-wordpress-api-generator</module>
-            </modules>
+			<modules>
+				<module>agorava-wordpress-api-generator</module>
+			</modules>
 		</profile>
 	</profiles>
 	<modules>

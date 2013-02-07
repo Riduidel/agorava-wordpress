@@ -1,0 +1,13 @@
+{
+    "name": "WordPress.com",
+    "slug": "wordpresscom",
+    "description": "",
+    "post_count": 12,
+    "meta": {
+        "links": {
+            "self": "https:\/\/public-api.wordpress.com\/rest\/v1\/sites\/3584907\/tags\/slug:wordpresscom",
+            "help": "https:\/\/public-api.wordpress.com\/rest\/v1\/sites\/3584907\/tags\/slug:wordpresscom\/help",
+            "site": "https:\/\/public-api.wordpress.com\/rest\/v1\/sites\/3584907"
+        }
+    }
+}

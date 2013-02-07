@@ -13,9 +13,9 @@
 		<!-- path is invalid in this project, but will become valid once in subdirectories 
 			(not very clean, but nevertheless efficient -->
 		<jsonschema2pojo.package>org.agorava.wordress.model.${element.to.generate}</jsonschema2pojo.package>
-		<jsonschema2pojo.directory>${project.basedir}/../../agorava-wordpress-api/src/generated</jsonschema2pojo.directory>
-		<jsonschema2pojo.source.directory>${jsonschema2pojo.directory}/json</jsonschema2pojo.source.directory>
-		<jsonschema2pojo.output.directory>${jsonschema2pojo.directory}/json-pojos</jsonschema2pojo.output.directory>
+		<jsonschema2pojo.directory>${project.basedir}/../../agorava-wordpress-api/src/</jsonschema2pojo.directory>
+		<jsonschema2pojo.source.directory>${jsonschema2pojo.directory}/test/resources/json</jsonschema2pojo.source.directory>
+		<jsonschema2pojo.output.directory>${jsonschema2pojo.directory}/generated/json-pojos</jsonschema2pojo.output.directory>
 	</properties>
 	<profiles>
         <profile>

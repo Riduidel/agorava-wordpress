@@ -1,9 +1,13 @@
 
 package org.agorava.wordpress.model;
 
+import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.TreeMap;
+
 import javax.annotation.Generated;
+
 import org.apache.commons.lang.builder.EqualsBuilder;
 import org.apache.commons.lang.builder.HashCodeBuilder;
 import org.apache.commons.lang.builder.ToStringBuilder;
@@ -21,20 +25,20 @@ import org.codehaus.jackson.map.annotate.JsonSerialize;
 public class Meta {
 
     @JsonProperty("links")
-    private Links links;
+    private Map<String, URL> links = new TreeMap<String, URL>();
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
     @JsonProperty("links")
-    public Links getLinks() {
+    public Map<String, URL> getLinks() {
         return links;
     }
 
     @JsonProperty("links")
-    public void setLinks(Links links) {
+    public void setLinks(Map<String, URL> links) {
         this.links = links;
     }
 
-    public Meta withLinks(Links links) {
+    public Meta withLinks(Map<String, URL> links) {
         this.links = links;
         return this;
     }
