@@ -11,6 +11,7 @@ import org.codehaus.jackson.annotate.JsonAnyGetter;
 import org.codehaus.jackson.annotate.JsonAnySetter;
 import org.codehaus.jackson.annotate.JsonProperty;
 import org.codehaus.jackson.annotate.JsonPropertyOrder;
+import org.codehaus.jackson.map.annotate.JsonDeserialize;
 import org.codehaus.jackson.map.annotate.JsonSerialize;
 
 @JsonSerialize(include = JsonSerialize.Inclusion.NON_NULL)
@@ -47,6 +48,7 @@ public class Comment {
     @JsonProperty("status")
     private String status;
     @JsonProperty("parent")
+    @JsonDeserialize(using=CommentParentDeserializer.class)
     private Parent parent;
     @JsonProperty("type")
     private String type;
